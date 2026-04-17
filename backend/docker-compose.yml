@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - chunks_volume:/app/chunks
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=fileshare.settings
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  celery_worker:
+    build: .
+    command: celery -A fileshare worker --loglevel=info --concurrency=4
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - chunks_volume:/app/chunks
+    environment:
+      - DJANGO_SETTINGS_MODULE=fileshare.settings
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  celery_beat:
+    build: .
+    command: celery -A fileshare beat --loglevel=info
+    volumes:
+      - .:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=fileshare.settings
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  media_volume:
+  chunks_volume:
+  redis_data:
