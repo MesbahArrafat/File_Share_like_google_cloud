@@ -4,6 +4,7 @@ import TopBar from '../components/layout/TopBar';
 import FileCard from '../components/files/FileCard';
 import PreviewModal from '../components/files/PreviewModal';
 import ShareModal from '../components/files/ShareModal';
+import MoveModal from '../components/files/MoveModal';
 import { useFiles } from '../context/FileContext';
 import toast from 'react-hot-toast';
 import s from './StarredPage.module.css';
@@ -13,6 +14,8 @@ export default function StarredPage() {
   const [loading, setLoading] = useState(true);
   const [preview, setPreview] = useState(null);
   const [shareFile, setShareFile] = useState(null);
+  const [moveFile, setMoveFile] = useState(null);
+  const [movingFile, setMovingFile] = useState(false);
   const { view, setView } = useFiles();
 
   const load = async () => {
@@ -40,6 +43,21 @@ export default function StarredPage() {
 
   const handleDownload = (file) => filesApi.download(file.id, file.filename);
 
+  const handleMoveFile = async (targetFolderId) => {
+    if (!moveFile) return;
+    setMovingFile(true);
+    try {
+      const { data } = await filesApi.move(moveFile.id, targetFolderId);
+      setFiles(p => p.map(f => f.id === data.id ? data : f));
+      setMoveFile(null);
+      toast.success('File moved');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Unable to move file');
+    } finally {
+      setMovingFile(false);
+    }
+  };
+
   return (
     <div className={s.page}>
       <TopBar title="Starred" view={view} onViewChange={setView} />
@@ -65,6 +83,7 @@ export default function StarredPage() {
                 onShare={setShareFile}
                 onDownload={handleDownload}
                 onRename={() => {}}
+                onMove={setMoveFile}
               />
             ))}
           </div>
@@ -74,6 +93,13 @@ export default function StarredPage() {
         onDownload={handleDownload} onStar={handleStar}
         onShare={f => { setPreview(null); setShareFile(f); }} />
       <ShareModal file={shareFile} onClose={() => setShareFile(null)} />
+      <MoveModal
+        file={moveFile}
+        currentFolder={null}
+        onClose={() => setMoveFile(null)}
+        onMove={handleMoveFile}
+        loading={movingFile}
+      />
     </div>
   );
 }
