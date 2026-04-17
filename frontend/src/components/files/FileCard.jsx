@@ -22,6 +22,7 @@ export default function FileCard({ file, selected, onSelect, onClick, onStar, on
             : <span className={s.fileIcon}>{getFileIcon(file)}</span>
           }
           <div className={s.ext} style={{ background: color }}>{file.extension?.toUpperCase() || 'FILE'}</div>
+          {file.is_public && <div className={s.publicBadge}>Public</div>}
         </div>
       ) : (
         <div className={s.listIcon} style={{ background: `${color}20`, color }}>
@@ -30,7 +31,10 @@ export default function FileCard({ file, selected, onSelect, onClick, onStar, on
       )}
 
       <div className={s.info}>
-        <div className={s.name} title={file.filename}>{file.filename}</div>
+        <div className={s.name} title={file.filename}>
+          {file.filename}
+          {file.is_public && <span className={s.publicBadge}>Public</span>}
+        </div>
         <div className={s.meta}>
           <span>{formatSize(file.size)}</span>
           <span className={s.dot}>·</span>
