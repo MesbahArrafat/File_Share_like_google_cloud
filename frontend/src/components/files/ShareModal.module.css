@@ -1,0 +1,23 @@
+.section { margin-bottom:4px; }
+.label { display:block; font-size:.78rem; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
+.linkRow { display:flex; gap:8px; }
+.linkInput { flex:1; background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:9px 12px; color:var(--text-secondary); font-size:.82rem; min-width:0; }
+.copyBtn { background:var(--accent); color:#fff; border:none; border-radius:var(--radius); padding:9px 16px; cursor:pointer; font-size:.85rem; font-weight:600; font-family:var(--font-body); white-space:nowrap; transition:all var(--transition); }
+.copyBtn:hover { background:#6aa3ff; }
+.regenBtn { background:none; border:none; color:var(--text-muted); font-size:.8rem; cursor:pointer; margin-top:8px; padding:2px 0; transition:color var(--transition); font-family:var(--font-body); }
+.regenBtn:hover { color:var(--accent); }
+.divider { border:none; border-top:1px solid var(--border); margin:16px 0; }
+.addRow { display:flex; gap:8px; }
+.emailInput { flex:1; background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:9px 12px; color:var(--text-primary); font-size:.875rem; transition:border var(--transition); }
+.emailInput:focus { border-color:var(--accent); }
+.addBtn { background:var(--bg-elevated); border:1px solid var(--border); color:var(--text-primary); border-radius:var(--radius); padding:9px 16px; cursor:pointer; font-size:.85rem; font-weight:600; font-family:var(--font-body); transition:all var(--transition); white-space:nowrap; }
+.addBtn:hover:not(:disabled) { background:var(--bg-overlay); border-color:var(--border-active); }
+.addBtn:disabled { opacity:.4; cursor:not-allowed; }
+.shareList { margin-top:12px; display:flex; flex-direction:column; gap:6px; }
+.shareItem { display:flex; align-items:center; gap:10px; background:var(--bg-elevated); border-radius:var(--radius); padding:8px 12px; }
+.shareAvatar { width:28px; height:28px; border-radius:50%; background:var(--accent-dim); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:700; flex-shrink:0; }
+.shareUser { flex:1; min-width:0; }
+.shareUser span { display:block; font-size:.85rem; font-weight:500; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.shareEmail { font-size:.75rem !important; color:var(--text-muted) !important; font-weight:400 !important; }
+.removeBtn { background:none; border:none; cursor:pointer; color:var(--text-muted); font-size:.8rem; padding:4px; border-radius:var(--radius-sm); transition:color var(--transition); }
+.removeBtn:hover { color:var(--danger); }

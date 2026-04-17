@@ -1,0 +1,23 @@
+import client from './client';
+export const filesApi = {
+  list:    p => client.get('/files/', { params: p }),
+  get:     id => client.get(`/files/${id}/`),
+  upload:  (fd, onProgress) => client.post('/files/', fd, { headers:{'Content-Type':'multipart/form-data'}, onUploadProgress: onProgress }),
+  rename:  (id, filename) => client.patch(`/files/${id}/rename/`, { filename }),
+  move:    (id, folder) => client.patch(`/files/${id}/move/`, { folder }),
+  trash:   id => client.delete(`/files/${id}/`),
+  restore: id => client.post(`/files/${id}/restore/`),
+  permDelete: id => client.delete(`/files/${id}/permanent_delete/`),
+  star:    id => client.post(`/files/${id}/star/`),
+  download:(id, name) => client.get(`/files/${id}/download/`, { responseType:'blob' }).then(r => { const url=URL.createObjectURL(r.data); const a=document.createElement('a'); a.href=url; a.download=name; a.click(); URL.revokeObjectURL(url); }),
+  zipDownload: ids => client.post('/files/zip_download/', { file_ids: ids }, { responseType:'blob' }).then(r => { const url=URL.createObjectURL(r.data); const a=document.createElement('a'); a.href=url; a.download='files.zip'; a.click(); URL.revokeObjectURL(url); }),
+  trashList:   p => client.get('/files/trash/', { params: p }),
+  starredList: p => client.get('/files/starred/', { params: p }),
+  search:  (q, folder) => client.get('/files/search/', { params: { q, folder } }),
+  shareWith: (id, email, can_download) => client.post(`/files/${id}/share_with/`, { email, can_download }),
+  getShares: id => client.get(`/files/${id}/share_with/`),
+  removeShare: (id, email) => client.delete(`/files/${id}/share_with/`, { data: { email } }),
+  generateShareLink: id => client.post(`/share/generate/${id}/`),
+  initChunk: (filename, total_size, total_chunks, folder) => client.post('/files/upload/chunk/init/', { filename, total_size, total_chunks, folder }),
+  uploadChunk: (upload_id, chunk_number, chunk) => { const fd=new FormData(); fd.append('chunk_number',chunk_number); fd.append('chunk',chunk); return client.post(`/files/upload/chunk/${upload_id}/`, fd); },
+};

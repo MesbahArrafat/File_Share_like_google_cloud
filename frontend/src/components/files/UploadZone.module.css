@@ -1,0 +1,6 @@
+.zone { position:relative; min-height:100%; }
+.dragging { outline:2px dashed var(--accent); outline-offset:-8px; border-radius:var(--radius-lg); }
+.overlay { position:fixed; inset:0; background:rgba(79,142,255,.08); backdrop-filter:blur(2px); z-index:500; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.overlayContent { display:flex; flex-direction:column; align-items:center; gap:12px; background:var(--bg-elevated); border:2px dashed var(--accent); border-radius:var(--radius-xl); padding:40px 60px; }
+.overlayIcon { font-size:2.5rem; color:var(--accent); }
+.overlayText { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--accent); }

@@ -1,0 +1,16 @@
+.panel { position:fixed; bottom:24px; right:24px; background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; width:320px; box-shadow:var(--shadow-lg); z-index:999; animation:slideUp .25s both; }
+.panelTitle { font-size:.8rem; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px; }
+.item { margin-bottom:10px; }
+.item:last-child { margin-bottom:0; }
+.itemHeader { display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; }
+.name { font-size:.82rem; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:240px; }
+.status { font-size:.78rem; font-weight:700; flex-shrink:0; }
+.done { color:var(--success); }
+.error { color:var(--danger); }
+.uploading { color:var(--accent); }
+.processing { color:var(--warning); animation:spin .7s linear infinite; display:inline-block; }
+.track { background:var(--bg-overlay); border-radius:99px; height:3px; overflow:hidden; }
+.bar { height:100%; border-radius:99px; transition:width .3s ease; }
+.errMsg { font-size:.75rem; color:var(--danger); margin-top:4px; }
+@keyframes slideUp { from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1} }
+@keyframes spin { to{transform:rotate(360deg)} }

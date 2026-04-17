@@ -1,0 +1,28 @@
+.page { display:flex; flex-direction:column; height:100vh; overflow:hidden; }
+.content { flex:1; overflow-y:auto; padding:24px 28px; }
+.filters { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px; }
+.filter { background:var(--bg-elevated); border:1px solid var(--border); color:var(--text-secondary); border-radius:99px; padding:6px 14px; font-size:.8rem; font-weight:500; cursor:pointer; font-family:var(--font-body); transition:all var(--transition); }
+.filter:hover { border-color:var(--border-active); color:var(--text-primary); }
+.activeFilter { background:var(--accent-dim); border-color:rgba(79,142,255,.3); color:var(--accent); }
+.timeline { display:flex; flex-direction:column; gap:24px; }
+.group {}
+.dateLabel { font-family:var(--font-display); font-size:.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; padding-left:4px; }
+.groupItems { display:flex; flex-direction:column; gap:4px; }
+.logItem { display:flex; align-items:center; gap:12px; background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:11px 16px; transition:all var(--transition); }
+.logItem:hover { border-color:var(--border-active); background:var(--bg-elevated); }
+.logIcon { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0; }
+.logInfo { flex:1; display:flex; align-items:center; gap:8px; min-width:0; flex-wrap:wrap; }
+.logAction { font-size:.85rem; font-weight:600; color:var(--text-primary); white-space:nowrap; }
+.logFile { font-size:.83rem; color:var(--text-secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:320px; }
+.logFile::before { content:'—'; margin-right:6px; color:var(--text-muted); }
+.logTime { font-size:.75rem; color:var(--text-muted); flex-shrink:0; white-space:nowrap; }
+.loadMore { background:var(--bg-elevated); border:1px solid var(--border); color:var(--text-secondary); border-radius:var(--radius); padding:10px 24px; cursor:pointer; font-family:var(--font-body); font-size:.875rem; margin:0 auto; display:block; transition:all var(--transition); }
+.loadMore:hover:not(:disabled) { background:var(--bg-overlay); color:var(--text-primary); }
+.loadMore:disabled { opacity:.5; cursor:not-allowed; }
+.loadList { display:flex; flex-direction:column; gap:6px; }
+.skel { height:58px; border-radius:var(--radius-lg); background:linear-gradient(90deg,var(--bg-surface) 25%,var(--bg-elevated) 50%,var(--bg-surface) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
+.empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:80px 20px; text-align:center; }
+.emptyIcon { font-size:3rem; color:var(--text-muted); opacity:.3; }
+.emptyTitle { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--text-primary); }
+.emptyText { color:var(--text-secondary); font-size:.9rem; }
+@keyframes shimmer { from{background-position:-200% 0}to{background-position:200% 0} }

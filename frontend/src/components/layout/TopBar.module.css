@@ -1,0 +1,181 @@
+.bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.selBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(79, 142, 255, .25);
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: .8rem;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.zipBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 99px;
+    padding: 3px 10px;
+    font-size: .78rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.zipBtn:hover {
+    background: #6aa3ff;
+}
+
+.clearBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: .9rem;
+    line-height: 1;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    gap: 8px;
+    width: 220px;
+    transition: all var(--transition);
+}
+
+.search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+    width: 280px;
+}
+
+.searchIcon {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.searchInput {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: .875rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.searchInput::placeholder {
+    color: var(--text-muted);
+}
+
+.clearSearch {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: .8rem;
+}
+
+.viewToggle {
+    display: flex;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.viewToggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 7px 10px;
+    font-size: 1rem;
+    transition: all var(--transition);
+}
+
+.viewToggle button:hover {
+    color: var(--text-primary);
+}
+
+.activeView {
+    background: var(--bg-overlay) !important;
+    color: var(--text-primary) !important;
+}
+
+.uploadBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 9px 18px;
+    font-size: .875rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+
+.uploadBtn:hover {
+    background: #6aa3ff;
+    box-shadow: var(--shadow-accent);
+    transform: translateY(-1px);
+}
+
+.folderBtn {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 9px 14px;
+    font-size: .85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+
+.folderBtn:hover {
+    border-color: var(--border-active);
+    background: var(--bg-overlay);
+}
